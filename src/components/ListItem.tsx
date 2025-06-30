@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router";
 import useGetAll from "../hooks/useGetAll";
+import { Navbar } from "./Navbar";
 
 export function ListItem() {
     const { result, error, loading } = useGetAll();
@@ -14,6 +15,7 @@ export function ListItem() {
     return (
         <div>
             <h1>List Items</h1>
+            <Navbar />
             <div>
                 {result?.map((res) => (
                     <div key={res.show.id}>

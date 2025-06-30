@@ -1,18 +1,23 @@
 import { useState } from "react";
 import { useRegister } from "../hooks/useRegister";
+import { Navbar } from "./Navbar";
 
 export function Register() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     // const [email, setEmail] = useState("");
-    const { register } = useRegister()
+    const { register } = useRegister();
     return (
         <div>
+            <Navbar />
+
             <h1>Register</h1>
-            <form onSubmit={(e) => {
-                e.preventDefault();
-                register({ username, password})
-            }}>
+            <form
+                onSubmit={(e) => {
+                    e.preventDefault();
+                    register({ username, password });
+                }}
+            >
                 <div>
                     <label htmlFor="username">Username:</label>
                     <input
