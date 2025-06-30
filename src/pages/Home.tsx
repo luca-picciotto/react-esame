@@ -4,7 +4,7 @@ export function Home () {
 
     return (
         <>
-            <h1>{nomeProgetto}</h1>
+            <h1>Benvenuto in {nomeProgetto}</h1>
         </>
     )
 }
