@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import type { Result } from "../types/resultType";
 import { getAll } from "../services/apiGet";
 
-export function useGetApi () {
+export function useGetAll () {
 
     const [result, setResult] = useState<Result[] | null>(null);
     const [error, setError] = useState<string | null>(null);
@@ -26,4 +26,4 @@ export function useGetApi () {
     return {result, error, loading};
 }
 
-export default useGetApi;
+export default useGetAll;

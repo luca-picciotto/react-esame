@@ -1,7 +1,9 @@
+import type { Register } from "../types/accessType";
+
 // modificare il tipo di data in base allo swagger e togliere i valori di default
-export async function postOne(
-    token?: string ,
-    data: { username: string; password: string } = {username: "s", password: "s"}
+export async function postRegister(
+    data: Register,
+    token?: string 
 ) {
     const endpoint = "https://d3660g9kardf5b.cloudfront.net/api/register";
 
@@ -14,6 +16,7 @@ export async function postOne(
         // in base allo swagger cambiare i nomi degli attributi
         body: JSON.stringify({
             username: data.username,
+            // email: data.email,
             password: data.password,
         }),
     });

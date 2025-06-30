@@ -1,7 +1,9 @@
-import useGetApi from "../hooks/useGetAll";
+import { useNavigate } from "react-router";
+import useGetAll from "../hooks/useGetAll";
 
 export function ListItem() {
-    const { result, error, loading } = useGetApi();
+    const { result, error, loading } = useGetAll();
+    const navigate = useNavigate();
 
     if (loading) {
         return <p>Loading...</p>;
@@ -11,9 +13,21 @@ export function ListItem() {
 
     return (
         <div>
-            {result?.map((res) => (
-                <p>{res.show.name}</p>
-            ))}
+            <h1>List Items</h1>
+            <div>
+                {result?.map((res) => (
+                    <div key={res.show.id}>
+                        <p>{res.show.name}</p>
+                        <button
+                            onClick={() => {
+                                navigate(`/item/${res.show.id}`);
+                            }}
+                        >
+                            View Details
+                        </button>
+                    </div>
+                ))}
+            </div>
         </div>
     );
 }

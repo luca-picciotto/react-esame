@@ -1,29 +1,31 @@
-import { useEffect, useState } from "react";
-import type { Result } from "../types/resultType";
+import { useState } from "react";
+import type { Item } from "../types/resultType";
 import { getOne } from "../services/apiGet";
 
-export function useGetOne (param: string) {
-
-    const [result, setResult] = useState<Result | null>(null);
-    const [error, setError] = useState<string | null>(null);
+export function useGetOne() {
+    const [result, setResult] = useState<Item>();
+    const [error, setError] = useState<string | null>("");
     const [loading, setLoading] = useState<boolean>(false);
 
-    useEffect(()=>{
+    const getDetail = (id: number): Promise<Item> => {
         setLoading(true);
+        setError(null);
 
-        getOne(param)
-            .then((res: Result)=> {
-                setResult(res);
+        return getOne(id)
+            .then((data) => {
+                setResult(data);
+                return data;
             })
-            .catch((err: string)=> {
-                setError(err);
+            .catch((err) => {
+                setError(err.message || "Errore nella ricerca");
+                return err;
             })
-            .finally(()=>{
+            .finally(() => {
                 setLoading(false);
-            })
-    }, [])
+            });
+    };
 
-    return {result, error, loading};
+    return { result, error, loading, getDetail };
 }
 
 export default useGetOne;

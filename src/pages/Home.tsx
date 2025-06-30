@@ -1,5 +1,3 @@
-import ListItem from "../components/ListItem";
-
 export function Home () {
 
     const nomeProgetto: string = "react-template";
@@ -7,7 +5,6 @@ export function Home () {
     return (
         <>
             <h1>{nomeProgetto}</h1>
-            <ListItem></ListItem>
         </>
     )
 }

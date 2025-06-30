@@ -1,9 +1,9 @@
 export interface Result {
     score: number;
-    show:  Show;
+    show:  Item;
 }
 
-export interface Show {
+export interface Item {
     id:             number;
     url:            string;
     name:           string;
