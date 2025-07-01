@@ -1,21 +1,20 @@
 import { useState } from "react";
-import { useRegister } from "../hooks/useRegister";
-import { Navbar } from "./Navbar";
+import { usePost } from "../hooks/useRegister";
 
 export function Register() {
+    const endpoint = 'https://d3660g9kardf5b.cloudfront.net/api/register';
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     // const [email, setEmail] = useState("");
-    const { register } = useRegister();
+    const { postData } = usePost();
     return (
         <div>
-            <Navbar />
 
             <h1>Register</h1>
             <form
                 onSubmit={(e) => {
                     e.preventDefault();
-                    register({ username, password });
+                    postData({ username, password }, endpoint);
                 }}
             >
                 <div>
@@ -51,7 +50,7 @@ export function Register() {
                         required
                     />
                 </div>
-                <button type="submit">Register</button>
+                <button type="submit">Register</button> 
             </form>
         </div>
     );

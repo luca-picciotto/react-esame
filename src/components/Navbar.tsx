@@ -8,10 +8,13 @@ export function Navbar() {
                     <Link to="/">Home</Link>
                 </li>
                 <li>
-                    <Link to="/register">User Register</Link>
+                    <Link to="/access">User Access</Link>
                 </li>
                 <li>
                     <Link to="/list">List Item</Link>
+                </li>
+                <li>
+                    <Link to="/send">Send Item</Link>
                 </li>
             </ul>
         </nav>

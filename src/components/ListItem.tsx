@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router";
 import useGetAll from "../hooks/useGetAll";
 import { Navbar } from "./Navbar";
+import type { Result } from "../types/resultType";
 
 export function ListItem() {
     const { result, error, loading } = useGetAll();
@@ -17,12 +18,14 @@ export function ListItem() {
             <h1>List Items</h1>
             <Navbar />
             <div>
-                {result?.map((res) => (
-                    <div key={res.show.id}>
-                        <p>{res.show.name}</p>
+                {result?.map((res: Result) => (
+                    <div key={res.id}  >
+                        <p>{res.name}</p>
                         <button
                             onClick={() => {
-                                navigate(`/item/${res.show.id}`);
+                                console.log();
+                                
+                                navigate(`/item`, {state: { item: res } });
                             }}
                         >
                             View Details

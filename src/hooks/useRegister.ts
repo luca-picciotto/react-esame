@@ -1,15 +1,15 @@
 import { useState } from "react";
-import { postRegister } from "../services/apiPost";
+import { post } from "../services/apiPost";
 import type { Register } from "../types/accessType";
 
-export function useRegister() {
+export function usePost() {
     const [result, setResult] = useState<Register | null>(null);
     const [error, setError] = useState<string | null>(null);
     const [loading, setLoading] = useState<boolean>(false);
 
-    const register = async (data: Register) => {
+    const postData = async (data: any, endpoint: string) => {
         setLoading(true);
-        postRegister(data)
+        post(data, endpoint)
             .then(() => {
                 setResult(data);
                 setError(null);
@@ -25,7 +25,7 @@ export function useRegister() {
     };
 
     return {
-        register,
+        postData,
         result,
         error,
         loading

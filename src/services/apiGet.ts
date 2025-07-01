@@ -1,8 +1,9 @@
-import type { Item, Result } from "../types/resultType";
+// import type { Item, Result } from "../types/resultType";
+import type { Result } from "../types/resultType";
 
 // se la get vuole un parametro nell'endpoint, inserirlo negli attributi della funzione
 export async function getAll () {
-    const endpoint: string = ` https://api.tvmaze.com/search/shows?q=girls`;
+    const endpoint: string = `http://localhost:3000/api/agency`;
     const response: Response = await fetch(endpoint, {
         method: "GET",
         // headers: {           
@@ -34,7 +35,7 @@ export async function getOne(param: number) {
     
     if (!response.ok) throw new Error('errore nella getAll');
 
-    const data: Item = await response.json();
+    const data: Result = await response.json();
 
     return data;
 }
