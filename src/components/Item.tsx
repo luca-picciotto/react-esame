@@ -16,34 +16,38 @@ export function Item() {
     return (
         <div>
             <Navbar />
-            <h1>Item Details</h1>
-            
-            <table style={{ width: '100%', borderCollapse: 'collapse' }}>
-                <thead>
-                    <tr>
-                        <th style={{ border: '1px solid #ccc', padding: '10px', textAlign: 'left' }}>
-                            Property
-                        </th>
-                        <th style={{ border: '1px solid #ccc', padding: '10px', textAlign: 'left' }}>
-                            Value
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {Object.entries(item).map(([key, value]) => (
-                        <tr key={key}>
-                            <td style={{ border: '1px solid #ccc', padding: '10px' }}>
-                                {key}
-                            </td>
-                            <td style={{ border: '1px solid #ccc', padding: '10px' }}>
-                                {String(value)}
-                            </td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
-
-            <button onClick={() => navigate(-1)}>Go Back</button>
+            <div className="container">
+                <div className="d-flex justify-content-between align-items-center mb-4">
+                    <h1>Item Details</h1>
+                    <button onClick={() => navigate(-1)} className="btn btn-secondary">
+                        Go Back
+                    </button>
+                </div>
+                
+                <div className="card">
+                    <div className="card-header">
+                        <h5 className="card-title mb-0">{item.name}</h5>
+                    </div>
+                    <div className="card-body">
+                        <table className="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Property</th>
+                                    <th>Value</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {Object.entries(item).map(([key, value]) => (
+                                    <tr key={key}>
+                                        <td className="fw-bold">{key}</td>
+                                        <td>{String(value)}</td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 }

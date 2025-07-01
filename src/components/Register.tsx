@@ -9,48 +9,40 @@ export function Register() {
     const { postData } = usePost();
     return (
         <div>
-
-            <h1>Register</h1>
+            <h2 className="mb-4">Register</h2>
             <form
                 onSubmit={(e) => {
                     e.preventDefault();
                     postData({ username, password }, endpoint);
                 }}
             >
-                <div>
-                    <label htmlFor="username">Username:</label>
+                <div className="form-group">
+                    <label htmlFor="username" className="form-label">Username:</label>
                     <input
                         type="text"
                         id="username"
                         name="username"
                         value={username}
                         onChange={(e) => setUsername(e.target.value)}
+                        className="form-control"
                         required
                     />
                 </div>
-                {/* <div>
-                    <label htmlFor="email">Email:</label>
-                    <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        value={email} 
-                        onChange={(e) => setEmail(e.target.value)}
-                        required
-                    />
-                </div> */}
-                <div>
-                    <label htmlFor="password">Password:</label>
+                <div className="form-group">
+                    <label htmlFor="password" className="form-label">Password:</label>
                     <input
                         type="password"
                         id="password"
                         name="password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
+                        className="form-control"
                         required
                     />
                 </div>
-                <button type="submit">Register</button> 
+                <button type="submit" className="btn btn-success w-100">
+                    Register
+                </button> 
             </form>
         </div>
     );

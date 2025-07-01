@@ -1,17 +1,19 @@
 export function Login() {
     return (
-        <div>
-            <h2>Login</h2>
+         <div>
+            <h2 className="mb-4">Login</h2>
             <form>
-                <div>
-                    <label>Email:</label>
-                    <input type="email" />
+                <div className="form-group">
+                    <label className="form-label">Email:</label>
+                    <input type="email" className="form-control" />
                 </div>
-                <div>
-                    <label>Password:</label>
-                    <input type="password" />
+                <div className="form-group">
+                    <label className="form-label">Password:</label>
+                    <input type="password" className="form-control" />
                 </div>
-                <button type="submit">Login</button>
+                <button type="submit" className="btn btn-primary w-100">
+                    Login
+                </button>
             </form>
         </div>
     );
