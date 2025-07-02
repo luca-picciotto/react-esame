@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 import { Navbar } from "../components/Navbar";
 
 export function Home () {
@@ -10,15 +11,16 @@ export function Home () {
             <div className="container text-center mt-5">
                 <h1>Benvenuto in {nomeProgetto}</h1>
                 <p className="text-muted mt-3">
-                    Questo è un template React per gestire dati con API
+                    Istruzioni per l'uso:
+                    <ul className="list-unstyled">
+                        <li>1. Installa le dipendenze con <code>npm install</code></li>
+                        <li>2. Avvia il server di sviluppo con <code>npm start</code></li>
+                        <li>3. Modifica i file nella cartella <code>src</code> per iniziare a sviluppare</li>
+                        <Link to="/istruzioni">Clicca qui</Link>
+                    </ul>
                 </p>
             </div>
-            <div className="container text-center mt-5">
-                <h2>Inizia a utilizzare il template</h2>
-                <p className="text-muted mt-3">
-                    Segui le istruzioni nella documentazione per configurare il tuo progetto.
-                </p>
-            </div>
+           
         </>
     )
 }

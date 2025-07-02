@@ -8,6 +8,10 @@ import { Send } from "./components/Send";
 
 
 export function App() {
+  function RedirectToHTML() {
+  window.location.href = '/ELIMINA_QUESTA_CARTELLA/istruzioni.html';
+  return null; // Non renderizzare nulla nel componente
+}
   return (
     <BrowserRouter>
       <Routes>
@@ -16,6 +20,7 @@ export function App() {
         <Route path="/item" element={<Item/>}></Route>
         <Route path="/access" element={<Access/>}></Route>
         <Route path="/send" element={<Send/>}></Route>
+        <Route path="/istruzioni" element={<RedirectToHTML />}></Route>
         <Route path="*" element={<Home/>}></Route>
       </Routes>
     </BrowserRouter>
