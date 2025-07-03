@@ -10,7 +10,7 @@ export function ListItem() {
 
     useEffect(() => {}, [result, error, loading]);
 
-     if (loading) {
+    if (loading) {
         return (
             <>
                 <Navbar />
@@ -42,7 +42,7 @@ export function ListItem() {
                         <div key={res.id} className="list-group-item list-group-item-action">
                             <div className="d-flex justify-content-between align-items-center">
                                 <div>
-                                    <h5 className="mb-1">{Object.keys(res)[0]}</h5>
+                                    <h5 className="mb-1">{res.id}</h5>
                                     <p className="mb-1 text-muted">{Object.keys(res)[1]}, {Object.keys(res)[2]}</p>
                                 </div>
                                 <button
@@ -56,6 +56,7 @@ export function ListItem() {
                             </div>
                         </div>
                     ))}
+                    
                 </div>
             </div>
         </>
