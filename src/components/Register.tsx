@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { usePost } from "../hooks/useRegister";
+import { usePost } from "../hooks/usePost";
 
 export function Register() {
     const endpoint = 'https://d3660g9kardf5b.cloudfront.net/api/register';

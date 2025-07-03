@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { usePost } from "../hooks/useRegister";
+import { usePost } from "../hooks/usePost";
 import { Navbar } from "./Navbar";
 
 export function Send() {

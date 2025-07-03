@@ -5,6 +5,7 @@ import ListItem from "./components/ListItem";
 import { Item } from "./components/Item";
 import Access from "./pages/Access";
 import { Send } from "./components/Send";
+import { ProtectedPage } from './pages/ProtectedPage';
 
 
 export function App() {
@@ -19,7 +20,11 @@ export function App() {
         <Route path="/list" element={<ListItem/>}></Route>
         <Route path="/item" element={<Item/>}></Route>
         <Route path="/access" element={<Access/>}></Route>
-        <Route path="/send" element={<Send/>}></Route>
+        <Route path="/send" element={
+          <ProtectedPage>
+            <Send/>
+          </ProtectedPage>
+        }></Route>
         <Route path="/istruzioni" element={<RedirectToHTML />}></Route>
         <Route path="*" element={<Home/>}></Route>
       </Routes>

@@ -16,4 +16,6 @@ export async function post(
     });
 
     if (!response.ok) throw new Error('errore nella post')
+    const result = await response.json();
+    return result;
 }

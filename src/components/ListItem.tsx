@@ -2,10 +2,13 @@ import { useNavigate } from "react-router";
 import useGetAll from "../hooks/useGetAll";
 import { Navbar } from "./Navbar";
 import type { Result } from "../types/resultType";
+import { useEffect } from "react";
 
 export function ListItem() {
     const { result, error, loading } = useGetAll();
     const navigate = useNavigate();
+
+    useEffect(() => {}, [result, error, loading]);
 
      if (loading) {
         return (
