@@ -1,19 +1,33 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { usePost } from "../hooks/usePost";
+import { useNavigate } from "react-router";
 
 export function Login() {
     const endpoint = "https://d3660g9kardf5b.cloudfront.net/api/login";
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    const { login } = usePost();
+    const {error, login } = usePost();
+    const [alertMessage, setAlertMessage] = useState("");
+    const navigate = useNavigate();
 
+        // useEffect(() => {
+        //     const token = localStorage.getItem("token");
+        //     if (token && token?.trim() !== "") navigate("/");
+        // }, [navigate]);
     return (
         <div>
             <h2 className="mb-4">Login</h2>
             <form
                 onSubmit={(e) => {
-                    e.preventDefault();
-                    login({ username, password }, endpoint);
+                    if (username.trim() === "" || password.trim() === "") {
+                        setAlertMessage("Username and password are required");
+                        e.preventDefault();
+                        return;
+                    } else {
+                        login({ username, password }, endpoint);
+                        e.preventDefault();
+                        
+                    }
                 }}
             >
                 <div className="form-group">
@@ -44,6 +58,8 @@ export function Login() {
                         required
                     />
                 </div>
+                {alertMessage && <p>{alertMessage}</p>}
+                {error && <p>{error?.toString()}</p>}
                 <button type="submit" className="btn btn-primary w-100">
                     Login
                 </button>
