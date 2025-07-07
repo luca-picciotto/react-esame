@@ -6,14 +6,14 @@ export function Login() {
     const endpoint = "https://d3660g9kardf5b.cloudfront.net/api/login";
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    const {error, login } = usePost();
+    const { error, login } = usePost();
     const [alertMessage, setAlertMessage] = useState("");
     const navigate = useNavigate();
 
-        // useEffect(() => {
-        //     const token = localStorage.getItem("token");
-        //     if (token && token?.trim() !== "") navigate("/");
-        // }, [navigate]);
+    // useEffect(() => {
+    //     const token = localStorage.getItem("token");
+    //     if (token && token?.trim() !== "") navigate("/");
+    // }, [navigate]);
     return (
         <div>
             <h2 className="mb-4">Login</h2>
@@ -26,7 +26,6 @@ export function Login() {
                     } else {
                         login({ username, password }, endpoint);
                         e.preventDefault();
-                        
                     }
                 }}
             >
@@ -59,7 +58,18 @@ export function Login() {
                     />
                 </div>
                 {alertMessage && <p>{alertMessage}</p>}
-                {error && <p>{error?.toString()}</p>}
+                {error && (
+                    <div className="container">
+                        <div className="alert alert-danger">
+                            <h4 className="alert-heading">
+                                Errore di caricamento
+                            </h4>
+                            <p className="mb-2">
+                                Non è stato possibile caricare i dati: {error}
+                            </p>
+                        </div>
+                    </div>
+                )}
                 <button type="submit" className="btn btn-primary w-100">
                     Login
                 </button>

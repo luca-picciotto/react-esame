@@ -1,14 +1,18 @@
 import { useState } from "react";
 import { post } from "../services/apiPost";
 import type { LoginResponse, Register } from "../types/accessType";
+import { useNavigate } from "react-router";
 
 export function usePost() {
     const [result, setResult] = useState<Register | LoginResponse | null>(null);
     const [error, setError] = useState<string | null>(null);
     const [loading, setLoading] = useState<boolean>(false);
-
+    const navigate = useNavigate();
     const postData = async (data: any, endpoint: string): Promise<any> => {
+        setResult(null);
         setLoading(true);
+        setError(null);
+
         post(data, endpoint)
             .then(() => {
                 setResult(data);
@@ -24,6 +28,7 @@ export function usePost() {
     };
 
     const login = async (data: any, endpoint: string) => {
+        setResult(null);
         setLoading(true);
         setError(null);
 
@@ -34,6 +39,7 @@ export function usePost() {
 
                 localStorage.setItem("token", res.token);
                 setError(null);
+                navigate("/");
             })
             .catch((err) => {
                 setError(err.message || "Errore durante il login");
